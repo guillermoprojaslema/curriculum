@@ -6,7 +6,27 @@
 % available at http://www.latex-project.org/lppl/.
 
 
+
 \documentclass[11pt,a4paper,sans]{moderncv}        % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+
+
+
+\newcommand\score[2]{
+\pgfmathsetmacro\pgfxa{#1+1}
+\tikzstyle{scorestars}=[star, star points=5, star point ratio=2.25, draw,inner sep=1.3pt,anchor=outer point 3]
+  \begin{tikzpicture}[baseline]
+    \foreach \i in {1,...,#2} {
+    \pgfmathparse{(\i<=#1?"yellow":"gray")}
+    \edef\starcolor{\pgfmathresult}
+    \draw (\i*1.75ex,0) node[name=star\i,scorestars,fill=\starcolor]  {};
+   }
+  \end{tikzpicture}
+}
+
+
 
 % moderncv themes
 \moderncvstyle{classic}                             % style options are 'casual' (default), 'classic', 'banking', 'oldstyle' and 'fancy'
@@ -63,45 +83,16 @@
 \cventry{2007--2015}{Superior}{Universidad Tecnológica Metropolitana}{Ñuñoa, Santiago, Chile}{\textit{Título Pregrado}}{Ingeniería en Informática}  % arguments 3 to 6 can be left empty
 
 
+\section{Experiencia laboral}
+\cventry{Abril--Diciembre 2013}{Ayudantías}{UTEM}{Santiago}{Ñuñoa}{Desarrollé ayudantías para la asignatura de ciencia de la computación e Ingeniería de Software, en Universidad Tecnológica Metropolitana}
+\cventry{Enero--Marzo 2014}{Programador}{Escaleno}{Santiago}{Providencia}{Desarrollé mi práctica profesional habiendo cumplido 320 horas, en las cuales desarrollé tareas de detección de errores en CMS escritos en PHP. Además de desarrollar técnicas de scraping utilizando Node.js}
+\cventry{Mayo--Septiembre 2015}{Programador}{MiningTag}{Santiago}{Providencia}{Trabajé como desarrollador, para minintag.cl, en .NET utilizando C\# bajo WPF, para la creación de un mantenedor que controlara las direcciones IP de máquinas con SO embedidos, en camiones que realizaban trabajos para la minería. Apoyo en UX/UI para la construción de software para la minería de servicio de monitorización y señalética.}
+\cventry{Marzo--Junio 2016}{Programador}{IdeaUno}{Santiago}{Providencia}{Trabajé como desarrollador, para IdeaUno, en PHP. Bajo las directrices de maqueteador y mantenimiento front-end. Utilizando herramientas como Bootstrap, Material y SaaS. En algunos proyectos, utilicé CakePHP}
+\cventry{Diciembre 2016--Enero 2017}{Programador}{EasyPoint}{Santiago}{Ñuñoa}{Desarrollé ayudantías para la asignatura de ciencia de la computación e Ingeniería de Software, en Universidad Tecnológica Metropolitana}
+\cventry{Actualidad}{Programador}{}{}{}{En la actualidad, aprendiendo Ruby on Rails, desarrollando un proyecto de un sitio web, para el rubro del contrstrucción; su administración, sección de noticias, torneos, empleos, etc. Puedes chequearlo \href{https://github.com/guillermoprojaslema/contractor}{\textcolor{blue}{aquí}}} 
 
-\section{Educación superior}
-\cventry{year--year}{Degree}{Institution}{City}{\textit{Grade}}{Description}  % arguments 3 to 6 can be left empty
-\cventry{year--year}{Degree}{Institution}{City}{\textit{Grade}}{Description}
-
-
-
-%\section{E}
-%\cvitem{title}{\emph{Title}}
-%\cvitem{supervisors}{Supervisors}
-%\cvitem{description}{Short thesis abstract}
-
-\section{Experience}
-\subsection{Vocational}
-\cventry{year--year}{Job title}{Employer}{City}{}{General description no longer than 1--2 lines.\newline{}%
-Detailed achievements:%
-\begin{itemize}%
-\item Achievement 1;
-\item Achievement 2, with sub-achievements:
-  \begin{itemize}%
-  \item Sub-achievement (a);
-  \item Sub-achievement (b), with sub-sub-achievements (don't do this!);
-    \begin{itemize}
-    \item Sub-sub-achievement i;
-    \item Sub-sub-achievement ii;
-    \item Sub-sub-achievement iii;
-    \end{itemize}
-  \item Sub-achievement (c);
-  \end{itemize}
-\item Achievement 3.
-\end{itemize}}
-\cventry{year--year}{Job title}{Employer}{City}{}{Description line 1\newline{}Description line 2}
-\subsection{Miscellaneous}
-\cventry{year--year}{Job title}{Employer}{City}{}{Description}
-
-\section{Languages}
-\cvitemwithcomment{Language 1}{Skill level}{Comment}
-\cvitemwithcomment{Language 2}{Skill level}{Comment}
-\cvitemwithcomment{Language 3}{Skill level}{Comment}
+\section{Idiomas}
+\cvdoubleitem{Castellano}{\score{5}{5}}{Inglés}{\score{4.5}{5}}
 
 \section{Computer skills}
 \cvdoubleitem{category 1}{XXX, YYY, ZZZ}{category 4}{XXX, YYY, ZZZ}
