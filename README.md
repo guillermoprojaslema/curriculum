@@ -14,3 +14,6 @@ To generate .pdf
 
         # dvipdf CV.dvi
 
+Si quieres mi CV es español, puedes cambiar a la rama spanish
+
+	# $ git checkout spanish 
